@@ -53,7 +53,7 @@ export default function ScrollNav() {
             aria-label={`Go to ${section.label}`}
           >
             {/* Label on hover */}
-            <span className="text-xs text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+            <span className="text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
               {section.label}
             </span>
 

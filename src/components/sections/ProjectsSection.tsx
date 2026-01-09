@@ -1,5 +1,77 @@
 import { projects } from "../../data/content";
 import { ExternalLink, Github } from "lucide-react";
+import { useRef, useEffect, useState } from "react";
+
+// Project card with hover parallax effect
+function ProjectCard({ project }: { project: (typeof projects)[0] }) {
+  const cardRef = useRef<HTMLAnchorElement>(null);
+  const [transform, setTransform] = useState({ rotateX: 0, rotateY: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 20;
+    const rotateY = (centerX - x) / 20;
+    setTransform({ rotateX, rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setTransform({ rotateX: 0, rotateY: 0 });
+  };
+
+  return (
+    <a
+      ref={cardRef}
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative bg-zinc-900/50 rounded-2xl overflow-hidden border border-zinc-800 hover:border-yellow-500/50 transition-all duration-300"
+      style={{
+        transform: `perspective(1000px) rotateX(${transform.rotateX}deg) rotateY(${transform.rotateY}deg)`,
+        transformStyle: "preserve-3d",
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Project image */}
+      <div className="aspect-video bg-zinc-800 relative overflow-hidden">
+        <img
+          src={project.imageUrl}
+          alt={project.title}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
+
+        {/* Hover overlay */}
+        <div className="absolute inset-0 bg-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center">
+          <span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm flex items-center gap-2">
+            <ExternalLink size={16} />
+            View Project
+          </span>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors flex items-center gap-2">
+          {project.title}
+          <ExternalLink
+            size={16}
+            className="opacity-0 group-hover:opacity-100 transition-opacity"
+          />
+        </h3>
+        <p className="text-zinc-400 mt-2 text-sm leading-relaxed line-clamp-2">
+          {project.description}
+        </p>
+      </div>
+    </a>
+  );
+}
 
 export default function ProjectsSection() {
   const featuredProjects = projects.filter((p) => p.featured);
@@ -27,39 +99,7 @@ export default function ProjectsSection() {
         {/* Featured Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {featuredProjects.map((project, index) => (
-            <a
-              key={index}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative bg-zinc-900/50 rounded-2xl overflow-hidden border border-zinc-800 hover:border-yellow-500/50 transition-all duration-500"
-            >
-              {/* Project image placeholder */}
-              <div className="aspect-video bg-zinc-800 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-                <div className="w-full h-full flex items-center justify-center text-zinc-700">
-                  <span className="text-sm">{project.title} Preview</span>
-                </div>
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center">
-                  <ExternalLink size={32} className="text-white" />
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors flex items-center gap-2">
-                  {project.title}
-                  <ExternalLink
-                    size={16}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity"
-                  />
-                </h3>
-                <p className="text-zinc-400 mt-2 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-            </a>
+            <ProjectCard key={index} project={project} />
           ))}
         </div>
 
@@ -78,8 +118,13 @@ export default function ProjectsSection() {
                   rel="noopener noreferrer"
                   className="group flex items-center gap-4 p-4 bg-zinc-900/30 rounded-xl border border-zinc-800 hover:border-zinc-700 transition-all"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-zinc-800 flex items-center justify-center flex-shrink-0">
-                    <Github size={20} className="text-zinc-500" />
+                  {/* Thumbnail */}
+                  <div className="w-14 h-14 rounded-lg bg-zinc-800 overflow-hidden flex-shrink-0">
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="text-white font-medium truncate group-hover:text-yellow-400 transition-colors">

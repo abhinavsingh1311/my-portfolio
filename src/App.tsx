@@ -8,11 +8,28 @@ import BlogSection from "./components/sections/BlogSection";
 import ContactSection from "./components/sections/ContactSection";
 import ScrollNav from "./components/ui/ScrollNav";
 import ErrorBoundary from "./components/ErrorBoundary";
+import { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
+  useEffect(() => {
+    // Refresh ScrollTrigger after all content loads
+    ScrollTrigger.refresh();
+
+    // Smooth scroll setup (native CSS scroll-behavior or use Lenis for smoother)
+    document.documentElement.style.scrollBehavior = "smooth";
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
+
   return (
     <ErrorBoundary>
-      <div className="bg-black text-white overflow-x-hidden">
+      <div className="bg-black text-white">
         <ScrollNav />
         <main>
           <HeroSection />

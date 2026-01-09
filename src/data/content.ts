@@ -138,11 +138,26 @@ export const skills = [
 
 export const projects = [
   {
+    title: "roast as a service",
+    description:
+      "Allows configurable roasts using OpenAI API that can be integrated with Discord, websites etc.",
+    imageUrl: "/projects/roast.png",
+    link: "https://roast-api-two.vercel.app",
+    featured: true,
+  },
+  {
     title: "City Roads",
     description:
       "Allows to render city roads for a City using Three.js, Nomantin and OpenstreeMap apis used",
-    imageUrl: "projects/cityRoads.png",
+    imageUrl: "/projects/cityRoads.png",
     link: "https://cityRoads.space",
+    featured: true,
+  },
+  {
+    title: "3-D Space Portfolio",
+    description: "Comprehensive Three.js personal portfolio",
+    imageUrl: "/projects/preview.png",
+    link: "https://abhinavin.space",
     featured: true,
   },
   {
@@ -167,14 +182,6 @@ export const projects = [
       "Comprehensive extraction, parsing and analysis system that provides score as per ATS and job recommendations as per the resume",
     imageUrl: "/projects/resumeAI.png",
     link: "https://toastmyresume.dev/",
-    featured: true,
-  },
-  {
-    title: "Supply Chain Management System",
-    description:
-      "Comprehensive supply chain management system with secure authentication and efficient data pipelines",
-    imageUrl: "/projects/capstone.png",
-    link: "https://certifiedorigins.space",
     featured: true,
   },
   {
@@ -264,3 +271,15 @@ export const sections = [
   { id: "blog", label: "Blog & Arts", color: "#E6B800" },
   { id: "contact", label: "Contact", color: "#C88B3A" },
 ] as const;
+
+export const imagePaths = {
+  bg1: "/bg1.jpg",
+  bg2: "/bg2.jpg",
+  earlyDays: "/projects/early-days.jpg",
+  journey: "/projects/journey.gif",
+  coding: "/projects/coding.jpg",
+  codingJourney: "/projects/coding-journey.jpg",
+  afpiMohali: "/projects/AFPI.jpg",
+  naitLogo: "/projects/nait-logo.jpg",
+  portfolio: "/projects/portfolio-dev.gif",
+};
