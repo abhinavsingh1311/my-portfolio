@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 /* Import Google Fonts
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"); */
@@ -19,7 +19,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-*/
+/* 
 a,
 h1,
 h2,
@@ -45,9 +45,8 @@ a {
 }
 a:hover {
   color: #535bf2;
-}
+} 
 
-/*
 body {
   margin: 0;
   display: flex;
@@ -60,7 +59,7 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-*/
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -116,14 +115,449 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Focus styles for accessibility */
+Focus styles for accessibility 
 button:focus-visible,
 a:focus-visible {
   outline: 2px solid #fbbf24;
   outline-offset: 2px;
 }
 
-/* Smooth transitions globally */
+Smooth transitions globally 
 * {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+} */
+
+@import "tailwindcss";
+
+/* Google Fonts - Retro-Futuristic */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/* ==========================================
+   RETRO-FUTURISM NEON SYNTHWAVE THEME
+   ========================================== */
+
+:root {
+  /* Core palette */
+  --bg-deep: #050816;
+  --bg-surface: #0a0f1f;
+  --bg-card: #0d1224;
+
+  /* Neon accents */
+  --neon-pink: #ff2e9f;
+  --neon-cyan: #00f6ff;
+  --neon-yellow: #fcee09;
+  --neon-purple: #8a2be2;
+  --neon-green: #00ffb3;
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #c4c6ff;
+  --text-muted: #6b7194;
+
+  /* Gradients */
+  --gradient-sunset: linear-gradient(
+    135deg,
+    #ff9a8b 0%,
+    #ff6a88 50%,
+    #ff99ac 100%
+  );
+  --gradient-cyber: linear-gradient(
+    135deg,
+    #8a2be2 0%,
+    #ff2e9f 50%,
+    #00f6ff 100%
+  );
+  --gradient-neon: linear-gradient(90deg, #ff2e9f, #00f6ff);
+
+  /* Typography */
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: var(--text-primary);
+  background-color: var(--bg-deep);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display headings - Orbitron for sci-fi feel */
+h1,
+h2,
+h3 {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Mono for terminal/code elements */
+code,
+.mono,
+.terminal {
+  font-family: "JetBrains Mono", monospace;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg-deep);
+}
+
+/* ==========================================
+   NEON EFFECTS & UTILITIES
+   ========================================== */
+
+/* Neon glow text */
+.neon-text-pink {
+  color: var(--neon-pink);
+  text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink),
+    0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink);
+}
+
+.neon-text-cyan {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan),
+    0 0 20px var(--neon-cyan);
+}
+
+.neon-text-yellow {
+  color: var(--neon-yellow);
+  text-shadow: 0 0 5px var(--neon-yellow), 0 0 10px var(--neon-yellow);
+}
+
+/* Neon border glow */
+.neon-border-pink {
+  border: 1px solid var(--neon-pink);
+  box-shadow: 0 0 5px var(--neon-pink), inset 0 0 5px rgba(255, 46, 159, 0.1);
+}
+
+.neon-border-cyan {
+  border: 1px solid var(--neon-cyan);
+  box-shadow: 0 0 5px var(--neon-cyan), inset 0 0 5px rgba(0, 246, 255, 0.1);
+}
+
+/* Scan lines overlay */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 246, 255, 0.03) 2px,
+    rgba(0, 246, 255, 0.03) 4px
+  );
+}
+
+/* CRT flicker effect */
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.8;
+  }
+  94% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0.9;
+  }
+}
+
+.crt-flicker {
+  animation: flicker 3s infinite;
+}
+
+/* Grid pattern background */
+.cyber-grid {
+  background-image: linear-gradient(
+      rgba(0, 246, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(0, 246, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Perspective grid (horizon effect) */
+.horizon-grid {
+  background: linear-gradient(
+      transparent 65%,
+      var(--neon-pink) 65.5%,
+      transparent 66%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 49px,
+      rgba(255, 46, 159, 0.3) 49px,
+      rgba(255, 46, 159, 0.3) 51px
+    );
+  background-size: 100% 100%, 100px 100%;
+  transform: perspective(500px) rotateX(60deg);
+  transform-origin: center top;
+}
+
+/* Glitch effect */
+@keyframes glitch {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+.glitch:hover {
+  animation: glitch 0.3s infinite;
+}
+
+/* Hologram shimmer */
+@keyframes hologram {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(15deg);
+  }
+}
+
+.hologram {
+  background: linear-gradient(
+    90deg,
+    var(--neon-cyan),
+    var(--neon-pink),
+    var(--neon-cyan)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hologram 3s ease-in-out infinite;
+}
+
+/* ==========================================
+   RETRO CARD STYLES
+   ========================================== */
+
+.retro-card {
+  background: linear-gradient(
+    135deg,
+    rgba(13, 18, 36, 0.9),
+    rgba(5, 8, 22, 0.95)
+  );
+  border: 1px solid rgba(0, 246, 255, 0.2);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.retro-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-neon);
+}
+
+/* Corner brackets */
+.corner-brackets {
+  position: relative;
+}
+
+.corner-brackets::before,
+.corner-brackets::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--neon-cyan);
+  border-style: solid;
+}
+
+.corner-brackets::before {
+  top: 0;
+  left: 0;
+  border-width: 2px 0 0 2px;
+}
+
+.corner-brackets::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 2px 2px 0;
+}
+
+/* Terminal window style */
+.terminal-window {
+  background: rgba(5, 8, 22, 0.95);
+  border: 1px solid rgba(0, 246, 255, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.terminal-window::before {
+  content: "● ● ●";
+  display: block;
+  padding: 8px 12px;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--neon-pink);
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 246, 255, 0.2);
+}
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+
+.btn-neon {
+  position: relative;
+  padding: 12px 32px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--neon-cyan);
+  background: transparent;
+  border: 2px solid var(--neon-cyan);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.btn-neon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--neon-cyan);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.btn-neon:hover {
+  color: var(--bg-deep);
+  box-shadow: 0 0 10px var(--neon-cyan), 0 0 40px var(--neon-cyan);
+}
+
+.btn-neon:hover::before {
+  transform: translateX(0);
+}
+
+.btn-neon-pink {
+  color: var(--neon-pink);
+  border-color: var(--neon-pink);
+}
+
+.btn-neon-pink::before {
+  background: var(--neon-pink);
+}
+
+.btn-neon-pink:hover {
+  box-shadow: 0 0 10px var(--neon-pink), 0 0 40px var(--neon-pink);
+}
+
+/* ==========================================
+   SCROLLBAR
+   ========================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neon-pink);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 46, 159, 0.4);
+  color: white;
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan),
+      0 0 30px var(--neon-cyan);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Line clamp */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* GSAP pin fix */
+.pin-spacer {
+  flex-shrink: 0;
 }

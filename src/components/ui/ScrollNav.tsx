@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react";
-import { sections } from "../../data/content";
+
+const sections = [
+  { id: "hero", label: "HOME" },
+  { id: "about", label: "ABOUT" },
+  { id: "experience", label: "EXP" },
+  { id: "skills", label: "SKILLS" },
+  { id: "projects", label: "PROJECTS" },
+  { id: "blog", label: "BLOG" },
+  { id: "contact", label: "CONTACT" },
+];
 
 export default function ScrollNav() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -7,63 +16,77 @@ export default function ScrollNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show nav after scrolling past hero
-      setIsVisible(window.scrollY > window.innerHeight * 0.5);
+      setIsVisible(window.scrollY > 100);
 
-      // Determine active section
-      const sectionElements = sections.map((s) => ({
-        id: s.id,
-        element: document.getElementById(s.id),
-      }));
-
-      for (let i = sectionElements.length - 1; i >= 0; i--) {
-        const section = sectionElements[i];
-        if (section.element) {
-          const rect = section.element.getBoundingClientRect();
-          if (rect.top <= window.innerHeight * 0.5) {
-            setActiveSection(section.id);
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i].id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= window.innerHeight / 2) {
+            setActiveSection(sections[i].id);
             break;
           }
         }
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: "smooth" });
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <nav
-      className={`fixed right-6 top-1/2 -translate-y-1/2 z-50 transition-all duration-500 ${
-        isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
+      className={`fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 transition-all duration-500 ${
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      <div className="flex flex-col gap-3">
-        {sections.map((section) => (
+      <div
+        className="flex flex-col gap-1 p-2 rounded"
+        style={{
+          background: "rgba(5, 8, 22, 0.8)",
+          border: "1px solid rgba(0, 246, 255, 0.2)",
+          backdropFilter: "blur(10px)",
+        }}
+      >
+        {sections.map((s) => (
           <button
-            key={section.id}
-            onClick={() => scrollToSection(section.id)}
-            className="group relative flex items-center justify-end gap-3"
-            aria-label={`Go to ${section.label}`}
+            key={s.id}
+            onClick={() => scrollTo(s.id)}
+            className="group flex items-center justify-end gap-2 px-2 py-1 rounded transition-all"
+            style={{
+              background:
+                activeSection === s.id
+                  ? "rgba(0, 246, 255, 0.1)"
+                  : "transparent",
+            }}
+            aria-label={`Go to ${s.label}`}
           >
-            {/* Label on hover */}
-            <span className="text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-              {section.label}
-            </span>
-
-            {/* Dot indicator */}
             <span
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                activeSection === section.id
-                  ? "bg-white scale-125"
-                  : "bg-zinc-600 hover:bg-zinc-400"
-              }`}
+              className="text-[10px] tracking-wider opacity-0 group-hover:opacity-100 transition-opacity"
+              style={{
+                color:
+                  activeSection === s.id
+                    ? "var(--neon-cyan)"
+                    : "var(--text-muted)",
+                fontFamily: "JetBrains Mono",
+              }}
+            >
+              {s.label}
+            </span>
+            <span
+              className="w-1.5 h-1.5 rounded-full transition-all"
+              style={{
+                background:
+                  activeSection === s.id
+                    ? "var(--neon-cyan)"
+                    : "var(--text-muted)",
+                boxShadow:
+                  activeSection === s.id ? "0 0 8px var(--neon-cyan)" : "none",
+              }}
             />
           </button>
         ))}

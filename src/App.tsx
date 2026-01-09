@@ -29,7 +29,10 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <div className="bg-black text-white">
+      <div
+        className="bg-cover bg-center bg-fixed bg-black text-white"
+        style={{ backgroundImage: "url('/bg3.jpg')" }}
+      >
         <ScrollNav />
         <main>
           <HeroSection />

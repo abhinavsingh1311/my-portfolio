@@ -14,7 +14,7 @@ export default function SkillsSection() {
       id="skills"
       className="min-h-screen py-24 px-6 md:px-12 lg:px-24 relative"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-zinc-950/70 to-black/80" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
 
       <div className="relative z-10 max-w-6xl mx-auto">

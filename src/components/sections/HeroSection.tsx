@@ -88,11 +88,14 @@ export default function HeroSection() {
       {/* Animated background */}
       <div
         ref={bgRef}
-        className="absolute inset-0 w-full h-full bg-[url('/bg1.jpg')] bg-cover bg-center"
-        style={{ transformOrigin: "center center" }}
+        className="absolute inset-0 w-full h-full bg-cover bg-center"
+        style={{
+          transformOrigin: "center center",
+          backgroundImage: `url('${imagePaths.bg1}')`,
+        }}
       >
         {/* Gradient mesh background */}
-        <div className="absolute inset-0 bg-black/50">
+        <div className="absolute inset-0 bg-black/70">
           <div className="absolute inset-0 opacity-40">
             <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-orange-500/30 rounded-full blur-[120px]" />
             <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-500/30 rounded-full blur-[100px]" />

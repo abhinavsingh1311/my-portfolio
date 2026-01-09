@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { aboutContent, education, imagePaths } from "../../data/content";
-import { ConstrainedImage } from "../ui/ParallaxImage";
+import ParallaxImage, { ConstrainedImage } from "../ui/ParallaxImage";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -137,7 +137,7 @@ export default function AboutSection() {
       className="min-h-screen py-24 px-6 md:px-12 lg:px-24 relative"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-zinc-950/70 to-black/80" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange-500/50 to-transparent" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -152,79 +152,66 @@ export default function AboutSection() {
           <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-orange-300" />
         </div>
 
-        {/* Intro Panel */}
-        <StoryPanel
-          id="intro"
-          backgroundImage={imagePaths.bg2}
-          title="The Beginning"
-          alignment="left"
+        <div
+          className="m-4 p-4"
+          style={{
+            border: "5px solid var(--neon-purple)",
+            boxShadow: "0 0 15px 5px var(--neon-purple)",
+          }}
         >
-          <div className="space-y-6">
-            {/* Retro terminal-style text block */}
-            <div className="relative border border-orange-500/30 bg-black/40 backdrop-blur-sm p-6 rounded-lg">
-              {/* Scan line overlay */}
-              <div className="absolute inset-0 pointer-events-none opacity-10 bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(255,165,0,0.1)_2px,rgba(255,165,0,0.1)_4px)]" />
-              {/* Corner accents */}
-              <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-orange-500" />
-              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-orange-500" />
-              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-orange-500" />
-              <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-orange-500" />
-
-              <p className="text-lg text-zinc-200 leading-relaxed mb-4 relative z-10">
+          {/* Intro */}
+          <div className="grid md:grid-cols-2 gap-12 m-20 items-center">
+            <div className="space-y-8">
+              <p className="text-lg text-zinc-300 leading-relaxed">
                 {aboutContent.intro}
               </p>
-              <p className="text-zinc-400 leading-relaxed relative z-10">
+              <p className="text-lg text-zinc-300 leading-relaxed">
                 {aboutContent.journey}
               </p>
             </div>
-
-            {/* Image with glow effect */}
-            <div className="relative mt-8">
-              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-xl blur-lg" />
+            <div className="relative">
               <ConstrainedImage
                 src={imagePaths.earlyDays}
                 alt="Early days in tech"
-                maxHeight="280px"
-                className="relative z-10"
+                maxHeight="300px"
               />
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-orange-500/20 rounded-full blur-2xl -z-10" />
             </div>
           </div>
-        </StoryPanel>
 
-        {/* AFPI Background Panel */}
-        <StoryPanel
-          id="afpi"
-          backgroundImage={imagePaths.afpiMohali}
-          title={aboutContent.afpiBackground.title}
-          alignment="left"
-        >
-          <div className="space-y-6">
-            {/* Content card */}
-            <div className="relative border border-cyan-500/30 bg-black/50 backdrop-blur-sm p-6 rounded-lg overflow-hidden">
-              {/* Cyber grid pattern */}
-              <div className="absolute inset-0 opacity-5 bg-[linear-gradient(rgba(0,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px]" />
-
-              <p className="text-zinc-300 leading-relaxed mb-4 relative z-10">
-                {aboutContent.afpiBackground.description}
-              </p>
-              <p className="text-zinc-400 leading-relaxed relative z-10">
-                {aboutContent.afpiBackground.extended}
-              </p>
-
-              {/* CTA link with retro styling */}
-              <a
-                href={aboutContent.afpiBackground.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-6 px-4 py-2 border border-orange-500/50 text-orange-400 hover:bg-orange-500/10 hover:text-orange-300 transition-all duration-300 rounded relative z-10 group"
-              >
-                <span>Learn more about AFPI</span>
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
-              </a>
+          {/* AFPI Background - Parallax */}
+          <div className="m-20">
+            <h3 className="text-2xl font-bold text-white mb-6">
+              {aboutContent.afpiBackground.title}
+            </h3>
+            <div className="grid md:grid-cols-5 gap-8 items-start">
+              <div className="md:col-span-2">
+                <ParallaxImage
+                  src={imagePaths.afpiMohali}
+                  alt="AFPI Mohali"
+                  className="h-64 md:h-72"
+                  speed={0.1}
+                />
+              </div>
+              <div className="md:col-span-3 space-y-4">
+                <p className="text-zinc-400 leading-relaxed">
+                  {aboutContent.afpiBackground.description}
+                </p>
+                <p className="text-zinc-400 leading-relaxed">
+                  {aboutContent.afpiBackground.extended}
+                </p>
+                <a
+                  href={aboutContent.afpiBackground.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block text-orange-400 hover:text-orange-300 transition-colors"
+                >
+                  Learn more about AFPI →
+                </a>
+              </div>
             </div>
           </div>
-        </StoryPanel>
-
+        </div>
         {/* Panel 3: Canada */}
         <StoryPanel
           id="about-canada"
@@ -247,13 +234,25 @@ export default function AboutSection() {
           title={aboutContent.naitJourney.title}
           alignment="center"
         >
-          <div className="flex flex-col md:flex-row gap-8 items-start">
-            <img
-              src={imagePaths.naitLogo}
-              alt="NAIT Logo"
-              className="w-100 h-full object-contain rounded-xl bg-white p-2 flex-shrink-0"
-            />
-            <div className="flex-1">
+          <div
+            className="grid grid-cols-1 items-center p-6"
+            style={{
+              background: "var(--bg-surface)",
+              border: "2px solid var(--neon-green)",
+              width: "600px",
+              height: "500px",
+              opacity: "90%",
+            }}
+          >
+            <div className="relative">
+              <ConstrainedImage
+                src={imagePaths.logo}
+                alt="NAIT Logo"
+                maxHeight="150px"
+              />
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-orange-500/20 rounded-full blur-2xl -z-10" />
+            </div>
+            <div className="space-y-8">
               <a
                 href={education.link}
                 target="_blank"
@@ -280,12 +279,22 @@ export default function AboutSection() {
           </div>
         </StoryPanel>
 
-        {/* Current work note */}
-        <div className="mt-16 text-center">
-          <p className="text-zinc-400 max-w-3xl mx-auto leading-relaxed">
+        {/* Current status */}
+        <div
+          className="mt-6 p-4 text-sm text-center"
+          style={{
+            border: "2px dashed var(--neon-purple)",
+          }}
+        >
+          <p style={{ fontSize: "1.5rem", color: "var(--neon-yellow)" }}>
             {aboutContent.currentWork}
           </p>
-          <p className="text-zinc-500 mt-4">{aboutContent.languages}</p>
+          <p className="mt-2 text-xl">
+            <span style={{ color: "var(--neon-pink)" }}>LANGUAGES:</span>{" "}
+            <span style={{ color: "var(--neon-cyan)" }}>
+              {aboutContent.languages}
+            </span>
+          </p>
         </div>
       </div>
     </section>

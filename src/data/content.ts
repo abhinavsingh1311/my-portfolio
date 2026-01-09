@@ -282,4 +282,5 @@ export const imagePaths = {
   afpiMohali: "/projects/AFPI.jpg",
   naitLogo: "/projects/nait-logo.jpg",
   portfolio: "/projects/portfolio-dev.gif",
+  logo: "/projects/nait-logo-1.jpg",
 };
