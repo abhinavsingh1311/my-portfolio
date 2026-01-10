@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import HeroSection from "./components/sections/HeroSection";
+import AboutSection from "./components/sections/AboutSection";
+import ExperienceSection from "./components/sections/ExperienceSection";
+import SkillsSection from "./components/sections/SkillsSection";
+import ProjectsSection from "./components/sections/ProjectsSection";
+import BlogSection from "./components/sections/BlogSection";
+import ContactSection from "./components/sections/ContactSection";
+import ScrollNav from "./components/ui/ScrollNav";
+import ErrorBoundary from "./components/ErrorBoundary";
+import { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const [count, setCount] = useState(0)
+  useEffect(() => {
+    // Refresh ScrollTrigger after all content loads
+    ScrollTrigger.refresh();
+
+    // Smooth scroll setup (native CSS scroll-behavior or use Lenis for smoother)
+    document.documentElement.style.scrollBehavior = "smooth";
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <ErrorBoundary>
+      <div
+        className="bg-cover bg-center bg-fixed bg-black text-white"
+        style={{ backgroundImage: "url('/bg3.jpg')" }}
+      >
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-zinc-950/80 to-black/10" /> */}
+        <ScrollNav />
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <ExperienceSection />
+          <SkillsSection />
+          <ProjectsSection />
+          <BlogSection />
+          <ContactSection />
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </ErrorBoundary>
+  );
 }
 
-export default App
+export default App;
