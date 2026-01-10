@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { contacts, personalInfo } from "../../data/content";
+import { contacts, imagePaths, personalInfo } from "../../data/content";
 import {
   Mail,
   Phone,
@@ -33,17 +33,32 @@ export default function ContactSection() {
       id="contact"
       className="min-h-screen py-24 px-6 md:px-12 lg:px-24 relative flex items-center overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-zinc-950/70 to-black/80" />
-      <div className="absolute inset-0 cyber-grid opacity-10" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
-
-      {/* Decorative glow */}
       <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full blur-[150px] opacity-20"
-        style={{ background: "var(--neon-green)" }}
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: `url(${imagePaths.bg5})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      />
+      <div className="absolute inset-0 cyber-grid opacity-10" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent" />
+
+      {/* Decorative elements */}
+      <div
+        className="absolute top-1/4 right-60 w-64 h-100 rounded-full blur-[300px] opacity-70"
+        style={{ background: "var(--neon-purple)" }}
       />
 
-      <div className="relative z-10 max-w-4xl mx-auto w-full">
+      <div
+        className="relative z-10 max-w-4xl mx-auto w-full p-16"
+        style={{
+          backgroundColor: "rgba(0,0,0,0.8)",
+          border: "2px solid var(--neon-purple)",
+          boxShadow: "0 0 15px 5px var(--neon-purple)",
+        }}
+      >
         {/* Header */}
         <div className="text-center mb-16">
           <span
@@ -71,8 +86,8 @@ export default function ContactSection() {
           <div
             className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full text-xs"
             style={{
-              background: "rgba(0, 255, 179, 0.1)",
-              border: "1px solid rgba(0, 255, 179, 0.3)",
+              background: "rgba(0, 255, 179, 0.4)",
+              border: "1px solid rgba(0, 255, 179, 0.7)",
               color: "var(--neon-green)",
               fontFamily: "JetBrains Mono",
             }}
@@ -106,7 +121,7 @@ export default function ContactSection() {
                 rel="noopener noreferrer"
                 className="group flex items-center gap-4 p-5 rounded-xl transition-all duration-300"
                 style={{
-                  background: "rgba(24, 24, 40, 0.5)",
+                  background: "rgba(24, 24, 40, 0.9)",
                   border: "1px solid rgba(63, 63, 70, 0.5)",
                 }}
                 onMouseEnter={(e) => {

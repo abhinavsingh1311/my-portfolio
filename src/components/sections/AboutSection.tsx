@@ -97,13 +97,18 @@ function StoryPanel({
     <div
       ref={panelRef}
       id={id}
-      className="h-screen w-full relative overflow-hidden"
+      className="min-h-screen py-24 px-6 md:px-12 lg:px-24 relative overflow-hidden"
     >
       {/* Background image */}
       <div
         ref={bgRef}
         className="absolute inset-0 w-full h-full"
-        style={{ transformOrigin: "center center" }}
+        style={{
+          //   transformOrigin: "center center",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
       >
         <img
           src={backgroundImage}

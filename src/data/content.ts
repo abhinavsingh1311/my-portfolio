@@ -48,7 +48,7 @@ export const education = {
   achievements: [
     "Graduated with perfect 4.0 CGPA",
     "Earned a place on the Dean's Honor Roll",
-    "Specialized in full-stack development with React, ASP.NET, and Three.js",
+    "Specialized in full-stack development with React, ASP.NET, C#, System Design, Project management",
     "Led a capstone project that was delivered two weeks ahead of schedule",
   ],
 };
@@ -143,6 +143,7 @@ export const projects = [
       "Allows configurable roasts using OpenAI API that can be integrated with Discord, websites etc.",
     imageUrl: "/projects/roast.png",
     link: "https://roast-api-two.vercel.app",
+    stack: "Rest APIs, Javascript, Express.js, OpenAI's API",
     featured: true,
   },
   {
@@ -151,6 +152,7 @@ export const projects = [
       "Allows to render city roads for a City using Three.js, Nomantin and OpenstreeMap apis used",
     imageUrl: "/projects/cityRoads.png",
     link: "https://cityRoads.space",
+    stack: "Vite.js, TailwindCSS, WebGL, THREE.js, Nomatin & OpenStreetMap API",
     featured: true,
   },
   {
@@ -166,6 +168,7 @@ export const projects = [
       "Users paste Spotify links and generate a shareable mixtape card.",
     imageUrl: "/projects/mixtape.png",
     link: "https://somemixtapes.com",
+    stack: "Next.js, TailwindCSS, Spotify API",
     featured: true,
   },
   {
@@ -174,6 +177,7 @@ export const projects = [
       "Start delivering webhooks with confidence. No more lost events!",
     imageUrl: "/projects/whds.png",
     link: "https://webhook-delivery-b6bshhhtg4gyf5gm.canadacentral-01.azurewebsites.net",
+    stack: "C# (BLAZOR), ASP.NET, Rest APIs, Azure Containers, SQL Server",
     featured: true,
   },
   {
@@ -182,6 +186,7 @@ export const projects = [
       "Comprehensive extraction, parsing and analysis system that provides score as per ATS and job recommendations as per the resume",
     imageUrl: "/projects/resumeAI.png",
     link: "https://toastmyresume.dev/",
+    stack: "Next.js, TailwindCSS, Claude API",
     featured: true,
   },
   {
@@ -190,6 +195,7 @@ export const projects = [
       "Comprehensive application to ensure plants get the care they deserve, built using Flutter and Firebase",
     imageUrl: "/projects/projects.png",
     link: "https://github.com/abhinavsingh1311/plant_mobile_app.git",
+    stack: "Flutter + Dart, Android Studio, FireBase",
     featured: false,
   },
   {
@@ -275,6 +281,9 @@ export const sections = [
 export const imagePaths = {
   bg1: "/bg1.jpg",
   bg2: "/bg2.jpg",
+  bg3: "/bg3.jpg",
+  bg4: "/bg4.jpg",
+  bg5: "/bg5.png",
   earlyDays: "/projects/early-days.jpg",
   journey: "/projects/journey.gif",
   coding: "/projects/coding.jpg",

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { skills } from "../../data/content";
+import { imagePaths, skills } from "../../data/content";
 
 const categoryColors: Record<
   string,
@@ -42,7 +42,18 @@ export default function SkillsSection() {
       className="min-h-screen py-24 px-6 md:px-12 lg:px-24 relative overflow-hidden"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-zinc-950/70 to-black/80" />
+      {/* Background image */}
+      <div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: `url('${imagePaths.bg2}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-pearl-950/80 to-black/99" />
+
       <div className="absolute inset-0 cyber-grid opacity-10" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
 

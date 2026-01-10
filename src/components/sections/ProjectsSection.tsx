@@ -1,4 +1,4 @@
-import { projects } from "../../data/content";
+import { imagePaths, projects } from "../../data/content";
 import { ExternalLink, Github, Folder } from "lucide-react";
 import { useRef, useState } from "react";
 
@@ -142,7 +142,7 @@ function ProjectCard({
           }}
         >
           <Folder size={12} style={{ color: "var(--neon-yellow)" }} />
-          <span>{}</span>
+          <span>{project.stack}</span>
         </div>
       </div>
     </a>
@@ -158,6 +158,15 @@ export default function ProjectsSection() {
       id="projects"
       className="min-h-screen py-24 px-6 md:px-12 lg:px-24 relative overflow-hidden"
     >
+      <div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: `url(${imagePaths.bg4})`,
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-zinc-950/70 to-black/80" />
       <div className="absolute inset-0 cyber-grid opacity-10" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent" />

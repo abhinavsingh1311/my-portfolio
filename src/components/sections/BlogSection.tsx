@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { blogContent } from "../../data/content";
+import { blogContent, imagePaths } from "../../data/content";
 import { ExternalLink, BookOpen, Camera, Terminal } from "lucide-react";
 
 export default function BlogSection() {
@@ -54,13 +54,22 @@ export default function BlogSection() {
       className="min-h-screen py-24 px-6 md:px-12 lg:px-24 relative overflow-hidden"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-zinc-950/70 to-black/80" />
+      {/* Background image */}
+      <div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: `url('${imagePaths.bg4}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      />
       <div className="absolute inset-0 cyber-grid opacity-10" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent" />
 
       {/* Decorative elements */}
       <div
-        className="absolute top-1/4 right-10 w-64 h-64 rounded-full blur-[120px] opacity-20"
+        className="absolute top-1/4 right-10 w-64 h-64 rounded-full blur-[120px] opacity-70"
         style={{ background: "var(--neon-purple)" }}
       />
 
@@ -211,7 +220,7 @@ export default function BlogSection() {
                 rel="noopener noreferrer"
                 className="group block rounded-2xl p-6 transition-all duration-300 hover:translate-x-2"
                 style={{
-                  background: "rgba(24, 24, 40, 0.5)",
+                  background: "rgba(24, 24, 40)",
                   border: "1px solid rgba(63, 63, 70, 0.5)",
                 }}
                 onMouseEnter={(e) => {
@@ -272,7 +281,7 @@ export default function BlogSection() {
               rel="noopener noreferrer"
               className="group block rounded-2xl p-6 transition-all duration-300 hover:translate-x-2"
               style={{
-                background: "rgba(24, 24, 40, 0.5)",
+                background: "rgba(24, 24, 40)",
                 border: "1px solid rgba(63, 63, 70, 0.5)",
               }}
               onMouseEnter={(e) => {
@@ -326,7 +335,7 @@ export default function BlogSection() {
                   key={i}
                   className="p-4 rounded-xl"
                   style={{
-                    background: "rgba(24, 24, 40, 0.5)",
+                    background: "rgba(24, 24, 40, 0.9)",
                     border: "1px solid rgba(63, 63, 70, 0.3)",
                   }}
                 >

@@ -33,6 +33,7 @@ function App() {
         className="bg-cover bg-center bg-fixed bg-black text-white"
         style={{ backgroundImage: "url('/bg3.jpg')" }}
       >
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-zinc-950/80 to-black/10" /> */}
         <ScrollNav />
         <main>
           <HeroSection />
