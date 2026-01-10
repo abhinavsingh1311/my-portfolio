@@ -119,7 +119,7 @@ export default function ContactSection() {
                   isEmail || contact.type === "phone" ? "_self" : "_blank"
                 }
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-5 rounded-xl transition-all duration-300"
+                className="group flex items-center gap-4 p-5 rounded-xl transition-all duration-300 min-w-0 overflow-hidden"
                 style={{
                   background: "rgba(24, 24, 40, 0.9)",
                   border: "1px solid rgba(63, 63, 70, 0.5)",
@@ -145,9 +145,9 @@ export default function ContactSection() {
                     {iconMap[contact.type]}
                   </span>
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <p
-                    className="text-xs uppercase tracking-wider"
+                    className="text-xs uppercase tracking-wider truncate"
                     style={{
                       color: "var(--text-muted)",
                       fontFamily: "JetBrains Mono",
@@ -156,7 +156,7 @@ export default function ContactSection() {
                     {contact.label}
                   </p>
                   <p
-                    className="font-medium group-hover:text-amber-400 transition-colors"
+                    className="font-medium group-hover:text-amber-400 transition-colors truncate"
                     style={{ color: "var(--text-primary)" }}
                   >
                     {contact.value}

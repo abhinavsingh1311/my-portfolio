@@ -16,7 +16,7 @@ export default function ScrollNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 100);
+      setIsVisible(window.scrollY > 120);
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i].id);
@@ -40,7 +40,7 @@ export default function ScrollNav() {
 
   return (
     <nav
-      className={`fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 transition-all duration-500 ${
+      className={`fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 transition-all duration-500 w-auto ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
@@ -56,7 +56,7 @@ export default function ScrollNav() {
           <button
             key={s.id}
             onClick={() => scrollTo(s.id)}
-            className="group flex items-center justify-end gap-2 px-2 py-1 rounded transition-all"
+            className="group flex items-center justify-end gap-2 px-3 py-2 min-h-[44px] rounded transition-all md:px-2 md:py-1"
             style={{
               background:
                 activeSection === s.id
@@ -66,7 +66,9 @@ export default function ScrollNav() {
             aria-label={`Go to ${s.label}`}
           >
             <span
-              className="text-[10px] tracking-wider opacity-0 group-hover:opacity-100 transition-opacity"
+              className={`text-[10px] tracking-wider transition-opacity ${
+                activeSection === s.id ? "opacity-100" : "opacity-70"
+              }`}
               style={{
                 color:
                   activeSection === s.id

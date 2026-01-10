@@ -144,8 +144,7 @@ export default function AboutSection() {
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-zinc-950/70 to-black/80" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange-500/50 to-transparent" />
-
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-12 lg:px-24">
         {/* Section header */}
         <div className="mb-16">
           <span className="text-orange-500 text-sm tracking-[0.3em] uppercase mb-4 block">
@@ -165,7 +164,7 @@ export default function AboutSection() {
           }}
         >
           {/* Intro */}
-          <div className="grid md:grid-cols-2 gap-12 m-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 mx-4 p-4 sm:mx-8 sm:p-6 lg:m-20 lg:p-0 items-start">
             <div className="space-y-8">
               <p className="text-lg text-zinc-300 leading-relaxed">
                 {aboutContent.intro}
@@ -185,12 +184,12 @@ export default function AboutSection() {
           </div>
 
           {/* AFPI Background - Parallax */}
-          <div className="m-20">
+          <div className="mx-4 sm:mx-8 lg:m-20">
             <h3 className="text-2xl font-bold text-white mb-6">
               {aboutContent.afpiBackground.title}
             </h3>
-            <div className="grid md:grid-cols-5 gap-8 items-start">
-              <div className="md:col-span-2">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-8 items-start">
+              <div className="lg:col-span-2">
                 <ParallaxImage
                   src={imagePaths.afpiMohali}
                   alt="AFPI Mohali"
@@ -198,7 +197,7 @@ export default function AboutSection() {
                   speed={0.1}
                 />
               </div>
-              <div className="md:col-span-3 space-y-4">
+              <div className="lg:col-span-3 space-y-4">
                 <p className="text-zinc-400 leading-relaxed">
                   {aboutContent.afpiBackground.description}
                 </p>
@@ -240,12 +239,11 @@ export default function AboutSection() {
           alignment="center"
         >
           <div
-            className="grid grid-cols-1 items-center p-6"
+            className="grid grid-cols-1 items-center p-4 sm:p-6 max-w-md mx-auto"
             style={{
               background: "var(--bg-surface)",
               border: "2px solid var(--neon-green)",
-              width: "600px",
-              height: "500px",
+              height: "auto", // Let it grow
               opacity: "90%",
             }}
           >
