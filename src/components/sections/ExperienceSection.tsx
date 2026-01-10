@@ -33,12 +33,12 @@ export default function ExperienceSection() {
     >
       {/* Background image */}
       <div
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full bg-center bg-cover md:bg-fixed"
         style={{
           backgroundImage: `url('${imagePaths.bg2}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed",
+          //   backgroundAttachment: "fixed",
         }}
       />
 

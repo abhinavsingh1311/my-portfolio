@@ -34,12 +34,12 @@ export default function ContactSection() {
       className="min-h-screen py-24 px-6 md:px-12 lg:px-24 relative flex items-center overflow-hidden"
     >
       <div
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full bg-center bg-cover md:bg-fixed"
         style={{
           backgroundImage: `url(${imagePaths.bg5})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed",
+          //   backgroundAttachment: "fixed",
         }}
       />
       <div className="absolute inset-0 cyber-grid opacity-10" />

@@ -44,12 +44,12 @@ export default function SkillsSection() {
       {/* Background */}
       {/* Background image */}
       <div
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full bg-center bg-cover md:bg-fixed"
         style={{
           backgroundImage: `url('${imagePaths.bg2}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed",
+          //   backgroundAttachment: "fixed",
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-pearl-950/80 to-black/99" />

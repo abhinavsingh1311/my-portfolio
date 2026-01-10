@@ -159,10 +159,10 @@ export default function ProjectsSection() {
       className="min-h-screen py-24 px-6 md:px-12 lg:px-24 relative overflow-hidden"
     >
       <div
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full bg-center bg-cover md:bg-fixed"
         style={{
           backgroundImage: `url(${imagePaths.bg4})`,
-          backgroundAttachment: "fixed",
+          //   backgroundAttachment: "fixed",
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}

@@ -56,12 +56,12 @@ export default function BlogSection() {
       {/* Background */}
       {/* Background image */}
       <div
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full bg-center bg-cover md:bg-fixed"
         style={{
           backgroundImage: `url('${imagePaths.bg4}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed",
+          //   backgroundAttachment: "fixed",
         }}
       />
       <div className="absolute inset-0 cyber-grid opacity-10" />
