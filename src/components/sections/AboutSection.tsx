@@ -27,63 +27,33 @@ function StoryPanel({
   useEffect(() => {
     if (!panelRef.current || !bgRef.current || !contentRef.current) return;
 
-    // Pin panel
-    const pinTrigger = ScrollTrigger.create({
-      trigger: panelRef.current,
-      start: "top top",
-      end: "+=100%",
-      pin: true,
-      pinSpacing: true,
-    });
-
-    // Zoom background
-    gsap.fromTo(
-      bgRef.current,
-      { scale: 1.1 },
-      {
-        scale: 1.3,
-        ease: "none",
-        scrollTrigger: {
-          trigger: panelRef.current,
-          start: "top top",
-          end: "+=100%",
-          scrub: 1,
-        },
-      }
-    );
-
-    // Content animation
-    gsap.fromTo(
-      contentRef.current,
-      { opacity: 0, y: 60 },
-      {
-        opacity: 1,
-        y: 0,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: panelRef.current,
-          start: "top top",
-          end: "+=40%",
-          scrub: 1,
-        },
-      }
-    );
-
-    // Fade out at end
-    gsap.to(contentRef.current, {
-      opacity: 0,
-      y: -40,
-      ease: "power2.in",
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: panelRef.current,
-        start: "+=70%",
-        end: "+=30%",
+        start: "top top",
+        end: "+=150%", // lengthen for smoother scrubbing
         scrub: 1,
+        pin: true,
+        anticipatePin: 1,
       },
     });
 
+    tl.fromTo(bgRef.current, { scale: 1.1 }, { scale: 1.3, ease: "none" }, 0)
+      .fromTo(
+        contentRef.current,
+        { opacity: 0, y: 60 },
+        { opacity: 1, y: 0, ease: "power2.out" },
+        0
+      )
+      .to(
+        contentRef.current,
+        { opacity: 0, y: -40, ease: "power2.in" },
+        0.6 // fade out later in the scroll
+      );
+
     return () => {
-      pinTrigger.kill();
+      tl.scrollTrigger?.kill();
+      tl.kill();
     };
   }, []);
 
@@ -107,7 +77,7 @@ function StoryPanel({
           //   transformOrigin: "center center",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed",
+          //   backgroundAttachment: "fixed",
         }}
       >
         <img
