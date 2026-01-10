@@ -159,7 +159,7 @@ export const projects = [
     title: "3-D Space Portfolio",
     description: "Comprehensive Three.js personal portfolio",
     imageUrl: "/projects/preview.png",
-    link: "https://abhinavin.space",
+    link: "https://mixtape-lab.vercel.app",
     featured: true,
   },
   {
