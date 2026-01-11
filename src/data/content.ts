@@ -176,7 +176,7 @@ export const projects = [
     description:
       "Start delivering webhooks with confidence. No more lost events!",
     imageUrl: "/projects/whds.png",
-    link: "https://webhook-delivery-b6bshhhtg4gyf5gm.canadacentral-01.azurewebsites.net",
+    link: "https://abhinavsingh1311.github.io/webhooks-delivery-service",
     stack: "C# (BLAZOR), ASP.NET, Rest APIs, Azure Containers, SQL Server",
     featured: true,
   },
