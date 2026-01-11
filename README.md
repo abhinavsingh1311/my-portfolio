@@ -206,7 +206,7 @@ export const experiences = [
 
 ---
 
-## 🧩 CSS Utilities
+## CSS Utilities
 
 The theme includes custom utility classes:
 
@@ -225,7 +225,7 @@ The theme includes custom utility classes:
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 ```json
 {
@@ -248,7 +248,7 @@ The theme includes custom utility classes:
 
 ---
 
-## 🔧 Performance Tips
+## Performance Tips
 
 - Images are lazy-loaded with `loading="lazy"`
 - GSAP ScrollTrigger uses `scrub` for smooth animations
@@ -258,13 +258,13 @@ The theme includes custom utility classes:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Design inspiration: GTA VI website, Lost in Space by Loom Studios
 - [GSAP](https://greensock.com/gsap/) for animation library
@@ -274,7 +274,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📬 Contact
+## Contact
 
 **Abhinav Singh** — Full Stack Developer
 
