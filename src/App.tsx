@@ -37,10 +37,10 @@ function App() {
         <ScrollNav />
         <main>
           <HeroSection />
-          <AboutSection />
           <ExperienceSection />
           <SkillsSection />
           <ProjectsSection />
+          <AboutSection />
           <BlogSection />
           <ContactSection />
         </main>
